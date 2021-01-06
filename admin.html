@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hi, Admin</title>
+  </head>
+  <body>
+    <h1>Send Notifications</h1>
+    <form>
+      <input type="text" name="name" id="name" />
+      <input type="email" name="email" id="email" />
+      <button type="submit" id="sendNotification">Submit</button>
+    </form>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.6.0/umd/popper.min.js"
+      integrity="sha512-BmM0/BQlqh02wuK5Gz9yrbe7VyIVwOzD1o40yi1IsTjriX/NGF37NyXHfmFzIlMmoSIBXgqDiG1VNU6kB5dBbA=="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.5/socket.io.min.js"
+      integrity="sha512-L9L4VhE0D58fCxtJiYDHbIzSVfNGY24rhQPWTZPschTVKLpucPsLeT0FSjfnylLYARalTQqgwXsjjhi+wUTwIw=="
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript">
+      var socket = io("http://localhost:3000/");
+      $("#sendNotification").click(function () {
+        // alert("Handler for .click() called.");
+        var name = $("#name").val();
+        var email = $("#email").val();
+
+        socket.emit("#sendNotification", {
+          name: name,
+          email: email,
+        });
+      });
+    </script>
+  </body>
+</html>
